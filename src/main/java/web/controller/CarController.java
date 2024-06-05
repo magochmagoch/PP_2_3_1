@@ -24,9 +24,6 @@ public class CarController {
         cars.add(new Car("Firm3", "Model3", 333));
         cars.add(new Car("Firm4", "Model4", 444));
         cars.add(new Car("Firm5", "Model5", 555));
-        if (count > 5) {
-            count = 5;
-        }
         model.addAttribute("cars", carService.getListOfCarsByCount(cars, count));
         return "cars";
     }

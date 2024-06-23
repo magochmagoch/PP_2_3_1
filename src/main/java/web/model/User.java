@@ -6,6 +6,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
 
 @Entity
 @Table(name = "users")
@@ -15,10 +18,15 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "name")
+    @NotEmpty(message = "Name must be given")
+    @Pattern(regexp = "^[\sa-zA-Z]+$",
+            message = "Name must contain only latin symbols")
+    @Column(name = "name", nullable = false)
     private String name;
 
-    @Column(name = "email")
+    @NotEmpty(message = "Email must be given")
+    @Email(message = "Non-correct email format")
+    @Column(name = "email", nullable = false)
     private String email;
 
     public User() {

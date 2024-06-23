@@ -9,34 +9,11 @@
 <div>
     <div th:each="user : ${users}">
         <h1 th:text="${user.toString()}"></h1>
+        <h3><a th:href="@{'/update?id=' + ${user.getId()}}">Update this user</a></h3>
+        <h3><a th:href="@{'/delete?id=' + ${user.getId()}}">Delete this user</a></h3>
+        </br>
     </div>
-    <form th:method="POST" th:action="@{/create}" th:object="${user}">
-        <label for="name">Enter name: </label>
-        <input type="text" th:field="*{name}" id="name"/>
-        <br/>
-        <label for="email">Enter email: </label>
-        <input type="text" th:field="*{email}" id="email"/>
-        <br/>
-        <input type="submit" value="Create"/>
-    </form>
-    <form th:method="POST" th:action="@{/update}" th:object="${user}">
-        <label for="id">Update by id: </label>
-        <input type="text" th:field="*{id}" id="id"/>
-        <br/>
-        <label for="name">Enter name: </label>
-        <input type="text" th:field="*{name}" id="name"/>
-        <br/>
-        <label for="email">Enter email: </label>
-        <input type="text" th:field="*{email}" id="email"/>
-        <br/>
-        <input type="submit" value="Update"/>
-    </form>
-    <form th:method="POST" th:action="@{/delete}" th:object="${user}">
-        <label for="id">Delete by id: </label>
-        <input type="text" th:field="*{id}" id="id"/>
-        <br/>
-        <input type="submit" value="Delete"/>
-    </form>
+    <h2><a href="/spring_mvc_war/create">Create new user</a></h2>
 </div>
 </body>
 </html>
